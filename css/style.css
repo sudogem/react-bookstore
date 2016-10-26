@@ -1,0 +1,10 @@
+.wrapper, .successPage {
+  margin-top: 5em;
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 600px;
+}
+
+.Floatright {
+  float: right;
+}
