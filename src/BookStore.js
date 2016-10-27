@@ -43,7 +43,8 @@ var BookList = React.createClass({
               { id:2, name: 'Monk who sold his Ferrari', author: 'Robin Sharma' },
               { id:3, name: 'Wings of Fire', author: 'A.P.J. Abdul Kalam' }
             ],
-              selectedBooks: JSON.parse(localStorage.getItem('selectedBooks')) || [],
+              // selectedBooks: JSON.parse(localStorage.getItem('selectedBooks')) || [],
+              selectedBooks: [],
               error: false
             }
     );
@@ -88,7 +89,7 @@ var BookList = React.createClass({
     }
 
     this.setState({selectedBooks: selbooks });
-    localStorage.setItem('selectedBooks', JSON.stringify(selbooks));
+    // localStorage.setItem('selectedBooks', JSON.stringify(selbooks));
   },
 
   handleSubmit(event) {
@@ -104,7 +105,6 @@ var BookList = React.createClass({
       this.props.parentUpdateFormData({selectedBooks: selbooks});
       this.props.updateStep(2);
     }
-
   },
 
   render() {
