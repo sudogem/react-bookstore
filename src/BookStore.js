@@ -34,18 +34,24 @@ var BookStore = React.createClass({
   }
 });
 
-// Step 1 of 3 List
+// Step 1 of 5 List
 var BookList = React.createClass({
   getInitialState() {
+    console.log('BookList getInitialState...');
     return ( {
       books: [{ id:1, name: 'Zero to One', author: 'Peter Thiel' },
               { id:2, name: 'Monk who sold his Ferrari', author: 'Robin Sharma' },
               { id:3, name: 'Wings of Fire', author: 'A.P.J. Abdul Kalam' }
             ],
-              selectedBooks: [],
+              selectedBooks: JSON.parse(localStorage.getItem('selectedBooks')) || [],
               error: false
             }
     );
+  },
+
+  componentDidMount: function () {
+    var selbooks = this.state.selectedBooks;
+    console.log('QQQ componentDidMount selectedBooks:', selbooks);
   },
 
   _renderError() {
@@ -71,7 +77,7 @@ var BookList = React.createClass({
   handleSelectedBooks(event){
     var selbooks = this.state.selectedBooks;
     // console.log('QQQ selectedBooks:', selbooks);
-    console.log('handleSubmit this.state.currentStep:', this.state.currentStep);
+    // console.log('handleSubmit this.state.currentStep:', this.state.currentStep);
     var index = selbooks.indexOf(event.target.value);
     if (event.target.checked) {
       if (index === -1) {
@@ -82,6 +88,7 @@ var BookList = React.createClass({
     }
 
     this.setState({selectedBooks: selbooks });
+    localStorage.setItem('selectedBooks', JSON.stringify(selbooks));
   },
 
   handleSubmit(event) {
@@ -94,7 +101,7 @@ var BookList = React.createClass({
       this.setState({error: 'Please choose at least one book to continue'});
     } else {
       this.setState({error: false});
-      this.props.parentUpdateFormData({selectedBooks: this.state.selectedBooks});
+      this.props.parentUpdateFormData({selectedBooks: selbooks});
       this.props.updateStep(2);
     }
 
@@ -170,6 +177,9 @@ var ShippingDetails = React.createClass({
   },
 
   updateStep(event) {
+    var selbooks = this.state.selectedBooks;
+    console.log('Step 2 selectedBooks:', selbooks);
+    this.props.parentUpdateFormData({selectedBooks: selbooks});
     this.props.updateStep(1);
   },
 
