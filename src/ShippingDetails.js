@@ -1,10 +1,19 @@
 import React from 'react';
+import SetIntervalMixin from './mixins/SetIntervalMixin';
+import CartTimeoutMixin from './mixins/CartTimeoutMixin';
 
 // Step 2 of 3 Shipping Details
 var ShippingDetails = React.createClass({
+  propTypes: {
+    alertCartTimeout: React.PropTypes.func.isRequired,
+    updateCartTimeout: React.PropTypes.func.isRequired,
+    cartTimeout: React.PropTypes.number.isRequired
+  },
+  mixins: [SetIntervalMixin, CartTimeoutMixin],
+
   getInitialState() {
     return (
-      {fullName:'', contactNumber:'', shippingAddress:'', error:false}
+      {fullName:'', contactNumber:'', shippingAddress:'', error:false, cartTimeout: this.props.cartTimeout}
     );
   },
 
@@ -61,6 +70,8 @@ var ShippingDetails = React.createClass({
 
   render() {
     var errorMessage = this._renderError();
+    var minutes = Math.floor(this.state.cartTimeout / 60);
+    var seconds = this.state.cartTimeout - minutes * 60;
     return(
       <div className='wrapper'>
         <span><a href="#" onClick={this.updateStep} className='Floatright' >&laquo; Back to Step 1</a></span>
@@ -88,8 +99,10 @@ var ShippingDetails = React.createClass({
             </button>
           </div>
         </form>
+        <div className="well">
+          <span className="glyphicon glyphicon-time" aria-hidden="true"></span> You have {minutes} Minutes, {seconds} Seconds, before confirming order
+        </div>
       </div>
-
     );
   }
 });

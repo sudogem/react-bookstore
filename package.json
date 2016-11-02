@@ -4,7 +4,8 @@
   "description": "this is sample react",
   "main": "",
   "scripts": {
-    "start": "node server.js",
+    "nodeserver": "node server.js",
+    "start": "webpack src/index.js&&webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "sudogem",

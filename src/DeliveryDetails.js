@@ -1,11 +1,24 @@
 import React from 'react';
+import SetIntervalMixin from './mixins/SetIntervalMixin';
+import CartTimeoutMixin from './mixins/CartTimeoutMixin';
 
 // Step 3 of 5 Delivery Details
 var DeliveryDetails = React.createClass({
+  propTypes: {
+    alertCartTimeout: React.PropTypes.func.isRequired,
+    updateCartTimeout: React.PropTypes.func.isRequired,
+    cartTimeout: React.PropTypes.number.isRequired
+  },
+  mixins: [SetIntervalMixin, CartTimeoutMixin],
+
   getInitialState() {
     return (
-      { deliveryOption: 'Primary' }
+      {deliveryOption: 'Primary', cartTimeout: this.props.cartTimeout}
     );
+  },
+
+  componentWillReceiveProps(newProps){
+    this.setState({cartTimeout: newProps.cartTimeout});
   },
 
   handleChange(event) {
@@ -27,6 +40,8 @@ var DeliveryDetails = React.createClass({
       'width': '500px',
       'marginTop': '5em'
     };
+    var minutes = Math.floor(this.state.cartTimeout / 60);
+    var seconds = this.state.cartTimeout - minutes * 60;
     return (
       <div className='wrapper'>
         <span><a href="#" onClick={this.updateStep} className='Floatright' >&laquo; Back to Step 2</a></span>
@@ -53,6 +68,10 @@ var DeliveryDetails = React.createClass({
           </div>
           <button className="btn btn-success">Submit</button>
         </form>
+
+        <div className="well">
+          <span className="glyphicon glyphicon-time" aria-hidden="true"></span> You have {minutes} Minutes, {seconds} Seconds, before confirming order
+        </div>
       </div>
 
     );
