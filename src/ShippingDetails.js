@@ -12,9 +12,13 @@ var ShippingDetails = React.createClass({
   mixins: [SetIntervalMixin, CartTimeoutMixin],
 
   getInitialState() {
-    return (
-      {fullName:'', contactNumber:'', shippingAddress:'', error:false, cartTimeout: this.props.cartTimeout}
-    );
+    return ({
+      fullName: this.props.getFormValues().fullName || '',
+      contactNumber: this.props.getFormValues().contactNumber || '',
+      shippingAddress: this.props.getFormValues().shippingAddress || '',
+      error:false,
+      cartTimeout: this.props.cartTimeout
+    });
   },
 
   _renderError() {

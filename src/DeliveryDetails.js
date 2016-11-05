@@ -12,9 +12,10 @@ var DeliveryDetails = React.createClass({
   mixins: [SetIntervalMixin, CartTimeoutMixin],
 
   getInitialState() {
-    return (
-      {deliveryOption: 'Primary', cartTimeout: this.props.cartTimeout}
-    );
+    return ({
+      deliveryOption: this.props.getFormValues().deliveryOption || 'Primary',
+      cartTimeout: this.props.cartTimeout
+    });
   },
 
   componentWillReceiveProps(newProps){
@@ -32,6 +33,7 @@ var DeliveryDetails = React.createClass({
   },
 
   updateStep(event) {
+    this.props.parentUpdateFormData(this.state);
     this.props.updateStep(2);
   },
 

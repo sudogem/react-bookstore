@@ -21486,6 +21486,9 @@
 	    var formValues = Object.assign({}, this.state.formValues, formData);
 	    this.setState({ formValues: formValues });
 	  },
+	  getFormValues: function getFormValues() {
+	    return this.state.formValues;
+	  },
 	  updateStep: function updateStep(currentStep) {
 	    console.log('currentStep:', currentStep);
 	    this.setState({ currentStep: currentStep });
@@ -21498,6 +21501,7 @@
 	          title: 'Step 1' });
 	      case 2:
 	        return _react2.default.createElement(_ShippingDetails2.default, { parentUpdateFormData: this.updateFormData,
+	          getFormValues: this.getFormValues,
 	          updateStep: this.updateStep,
 	          cartTimeout: this.state.cartTimeout,
 	          updateCartTimeout: this.updateCartTimeout,
@@ -21505,6 +21509,7 @@
 	          title: 'Step 2' });
 	      case 3:
 	        return _react2.default.createElement(_DeliveryDetails2.default, { parentUpdateFormData: this.updateFormData,
+	          getFormValues: this.getFormValues,
 	          updateStep: this.updateStep,
 	          cartTimeout: this.state.cartTimeout,
 	          updateCartTimeout: this.updateCartTimeout,
@@ -21551,6 +21556,8 @@
 	  getInitialState: function getInitialState() {
 	    console.log('BookList getInitialState...');
 	    return {
+	      fullName: '',
+	      contactNumber: '',
 	      books: [{ id: 1, name: 'Zero to One', author: 'Peter Thiel' }, { id: 2, name: 'Monk who sold his Ferrari', author: 'Robin Sharma' }, { id: 3, name: 'Wings of Fire', author: 'A.P.J. Abdul Kalam' }],
 	      // selectedBooks: JSON.parse(localStorage.getItem('selectedBooks')) || [],
 	      selectedBooks: [],
@@ -21614,7 +21621,12 @@
 	      this.setState({ error: 'Please choose at least one book to continue' });
 	    } else {
 	      this.setState({ error: false });
-	      this.props.parentUpdateFormData({ selectedBooks: selbooks });
+	      this.props.parentUpdateFormData({
+	        selectedBooks: selbooks,
+	        fullName: '',
+	        contactNumber: '',
+	        shippingAddress: ''
+	      });
 	      this.props.updateStep(2);
 	    }
 	  },
@@ -21682,7 +21694,13 @@
 	  mixins: [_SetIntervalMixin2.default, _CartTimeoutMixin2.default],
 
 	  getInitialState: function getInitialState() {
-	    return { fullName: '', contactNumber: '', shippingAddress: '', error: false, cartTimeout: this.props.cartTimeout };
+	    return {
+	      fullName: this.props.getFormValues().fullName || '',
+	      contactNumber: this.props.getFormValues().contactNumber || '',
+	      shippingAddress: this.props.getFormValues().shippingAddress || '',
+	      error: false,
+	      cartTimeout: this.props.cartTimeout
+	    };
 	  },
 	  _renderError: function _renderError() {
 	    if (this.state.error) {
@@ -21929,7 +21947,10 @@
 	  mixins: [_SetIntervalMixin2.default, _CartTimeoutMixin2.default],
 
 	  getInitialState: function getInitialState() {
-	    return { deliveryOption: 'Primary', cartTimeout: this.props.cartTimeout };
+	    return {
+	      deliveryOption: this.props.getFormValues().deliveryOption || 'Primary',
+	      cartTimeout: this.props.cartTimeout
+	    };
 	  },
 	  componentWillReceiveProps: function componentWillReceiveProps(newProps) {
 	    this.setState({ cartTimeout: newProps.cartTimeout });
@@ -21943,6 +21964,7 @@
 	    this.props.updateStep(4);
 	  },
 	  updateStep: function updateStep(event) {
+	    this.props.parentUpdateFormData(this.state);
 	    this.props.updateStep(2);
 	  },
 	  render: function render() {

@@ -68,7 +68,12 @@ var BookList = React.createClass({
       this.setState({error: 'Please choose at least one book to continue'});
     } else {
       this.setState({error: false});
-      this.props.parentUpdateFormData({selectedBooks: selbooks});
+      this.props.parentUpdateFormData({
+        selectedBooks: selbooks,
+        fullName: '',
+        contactNumber: '',
+        shippingAddress: ''
+      });
       this.props.updateStep(2);
     }
   },

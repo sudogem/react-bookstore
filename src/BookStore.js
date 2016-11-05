@@ -25,6 +25,10 @@ var BookStore = React.createClass({
     this.setState({formValues: formValues});
   },
 
+  getFormValues() {
+    return this.state.formValues;
+  },
+
   updateStep(currentStep) {
     console.log('currentStep:',currentStep);
     this.setState({currentStep: currentStep});
@@ -38,6 +42,7 @@ var BookStore = React.createClass({
                          title='Step 1' />;
       case 2:
         return <ShippingDetails parentUpdateFormData={this.updateFormData}
+                                getFormValues={this.getFormValues}
                                 updateStep={this.updateStep}
                                 cartTimeout={this.state.cartTimeout}
                                 updateCartTimeout={this.updateCartTimeout}
@@ -45,6 +50,7 @@ var BookStore = React.createClass({
                                 title='Step 2' />;
       case 3:
         return <DeliveryDetails parentUpdateFormData={this.updateFormData}
+                                getFormValues={this.getFormValues}
                                 updateStep={this.updateStep}
                                 cartTimeout={this.state.cartTimeout}
                                 updateCartTimeout={this.updateCartTimeout}
