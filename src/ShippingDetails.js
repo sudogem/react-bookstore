@@ -80,15 +80,18 @@ var ShippingDetails = React.createClass({
         {errorMessage}
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <input className="form-control" type="text" placeholder="Full Name" value={this.state.fullName} onChange={(event) => this.handleChange(event, 'fullName')} />
+            <label>Full name</label>
+            <input className="form-control" type="text" value={this.state.fullName} onChange={(event) => this.handleChange(event, 'fullName')} />
           </div>
 
           <div className="form-group">
-            <input className="form-control" type="text" placeholder="Contact number" value={this.state.contactNumber} onChange={(event) => this.handleChange(event, 'contactNumber')}/>
+            <label>Contact no.</label>
+            <input className="form-control" type="text" value={this.state.contactNumber} onChange={(event) => this.handleChange(event, 'contactNumber')}/>
           </div>
 
           <div className="form-group">
-            <input className="form-control" type="text" placeholder="Shipping Address" value={this.state.shippingAddress} onChange={(event) => this.handleChange(event, 'shippingAddress')} />
+            <label>Shipping address</label>
+            <textarea className="form-control" type="text" onChange={(event) => this.handleChange(event, 'shippingAddress')} value={this.state.shippingAddress} ></textarea>
           </div>
 
           <div className="form-group">

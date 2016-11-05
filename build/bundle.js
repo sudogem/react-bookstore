@@ -21513,7 +21513,7 @@
 	      case 4:
 	        return _react2.default.createElement(_Confirmation2.default, { parentUpdateFormData: this.updateFormData, data: this.state.formValues, updateStep: this.updateStep, title: 'Step 4' });
 	      case 5:
-	        return _react2.default.createElement(_Success2.default, { data: this.state.formValues });
+	        return _react2.default.createElement(_Success2.default, { data: this.state.formValues, updateStep: this.updateStep });
 	      case 10:
 	        /* Handle the case of Cart timeout */
 	        return _react2.default.createElement(
@@ -21622,15 +21622,9 @@
 	    var _this = this;
 
 	    var errorMessage = this._renderError();
-	    var styleForm = {
-	      'width': '500px',
-	      'border': '1px solid #ccc',
-	      'padding': '10px',
-	      'marginTop': '5em'
-	    };
 	    return _react2.default.createElement(
 	      'div',
-	      { style: styleForm },
+	      { className: 'wrapper' },
 	      _react2.default.createElement(
 	        'h2',
 	        null,
@@ -21771,23 +21765,38 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'form-group' },
-	          _react2.default.createElement('input', { className: 'form-control', type: 'text', placeholder: 'Full Name', value: this.state.fullName, onChange: function onChange(event) {
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Full name'
+	          ),
+	          _react2.default.createElement('input', { className: 'form-control', type: 'text', value: this.state.fullName, onChange: function onChange(event) {
 	              return _this.handleChange(event, 'fullName');
 	            } })
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'form-group' },
-	          _react2.default.createElement('input', { className: 'form-control', type: 'text', placeholder: 'Contact number', value: this.state.contactNumber, onChange: function onChange(event) {
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Contact no.'
+	          ),
+	          _react2.default.createElement('input', { className: 'form-control', type: 'text', value: this.state.contactNumber, onChange: function onChange(event) {
 	              return _this.handleChange(event, 'contactNumber');
 	            } })
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'form-group' },
-	          _react2.default.createElement('input', { className: 'form-control', type: 'text', placeholder: 'Shipping Address', value: this.state.shippingAddress, onChange: function onChange(event) {
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Shipping address'
+	          ),
+	          _react2.default.createElement('textarea', { className: 'form-control', type: 'text', onChange: function onChange(event) {
 	              return _this.handleChange(event, 'shippingAddress');
-	            } })
+	            }, value: this.state.shippingAddress })
 	        ),
 	        _react2.default.createElement(
 	          'div',
@@ -22144,9 +22153,11 @@
 	// Step 5 of 5 Success page
 	var Success = _react2.default.createClass({
 	  displayName: 'Success',
+	  updateStep: function updateStep(event) {
+	    this.props.updateStep(1);
+	  },
 	  render: function render() {
 	    var numberOfDays = "1 to 2 ";
-
 	    if (this.props.data.deliveryOption === 'Normal') {
 	      numberOfDays = "3 to 4 ";
 	    }
@@ -22161,7 +22172,7 @@
 	        '.'
 	      ),
 	      _react2.default.createElement(
-	        'h4',
+	        'p',
 	        null,
 	        'You will soon get ',
 	        this.props.data.selectedBooks.join(", "),
@@ -22170,6 +22181,11 @@
 	        ' in approximately ',
 	        numberOfDays,
 	        ' days.'
+	      ),
+	      _react2.default.createElement(
+	        'button',
+	        { onClick: this.updateStep },
+	        'Back to main page'
 	      )
 	    );
 	  }

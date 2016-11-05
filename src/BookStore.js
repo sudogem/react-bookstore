@@ -53,7 +53,7 @@ var BookStore = React.createClass({
       case 4:
         return <Confirmation parentUpdateFormData={this.updateFormData} data={this.state.formValues} updateStep={this.updateStep} title='Step 4' />;
       case 5:
-        return <Success data={this.state.formValues} />;
+        return <Success data={this.state.formValues} updateStep={this.updateStep} />;
       case 10:
        /* Handle the case of Cart timeout */
         return <div><h2>Your cart timed out, Please try again!</h2></div>;

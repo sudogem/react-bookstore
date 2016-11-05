@@ -75,14 +75,8 @@ var BookList = React.createClass({
 
   render() {
     var errorMessage = this._renderError();
-    var styleForm = {
-      'width': '500px',
-      'border': '1px solid #ccc',
-      'padding': '10px',
-      'marginTop': '5em'
-    };
     return(
-      <div style={styleForm}>
+      <div className='wrapper'>
         <h2>{this.props.title}</h2>
         <h3>Choose from wide variety of books available in our store.</h3>
         {errorMessage}
