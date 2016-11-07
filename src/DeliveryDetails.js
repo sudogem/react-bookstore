@@ -23,7 +23,7 @@ var DeliveryDetails = React.createClass({
   },
 
   handleChange(event) {
-    this.setState({ deliveryOption: event.target.value});
+    this.setState({deliveryOption: event.target.value});
   },
 
   handleSubmit(event) {
@@ -53,7 +53,7 @@ var DeliveryDetails = React.createClass({
           <div className="radio">
             <label>
               <input type="radio"
-                     checked={this.state.deliveryOption === "Primary"}
+                     checked={this.state.deliveryOption === 'Primary'}
                      value="Primary"
                      onChange={this.handleChange} />
               Primary -- Next day delivery
@@ -62,7 +62,7 @@ var DeliveryDetails = React.createClass({
           <div className="radio">
             <label>
               <input type="radio"
-                     checked={this.state.deliveryOption === "Normal"}
+                     checked={this.state.deliveryOption === 'Normal'}
                      value="Normal"
                      onChange={this.handleChange} />
               Normal -- 3-4 days
