@@ -5,9 +5,9 @@ var BookList = React.createClass({
   getInitialState() {
     console.log('BookList getInitialState...');
     return ( {
-      books: [{ id:1, name: 'Zero to One', author: 'Peter Thiel' },
-              { id:2, name: 'Monk who sold his Ferrari', author: 'Robin Sharma' },
-              { id:3, name: 'Wings of Fire', author: 'A.P.J. Abdul Kalam' }
+      books: [{id:1, name: 'Zero to One', author: 'Peter Thiel'},
+              {id:2, name: 'Monk who sold his Ferrari', author: 'Robin Sharma'},
+              {id:3, name: 'Wings of Fire', author: 'A.P.J. Abdul Kalam'}
             ],
               // selectedBooks: JSON.parse(localStorage.getItem('selectedBooks')) || [],
               selectedBooks: [],
