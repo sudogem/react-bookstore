@@ -22004,7 +22004,7 @@
 	            'label',
 	            null,
 	            _react2.default.createElement('input', { type: 'radio',
-	              checked: this.state.deliveryOption === "Primary",
+	              checked: this.state.deliveryOption === 'Primary',
 	              value: 'Primary',
 	              onChange: this.handleChange }),
 	            'Primary -- Next day delivery'
@@ -22017,7 +22017,7 @@
 	            'label',
 	            null,
 	            _react2.default.createElement('input', { type: 'radio',
-	              checked: this.state.deliveryOption === "Normal",
+	              checked: this.state.deliveryOption === 'Normal',
 	              value: 'Normal',
 	              onChange: this.handleChange }),
 	            'Normal -- 3-4 days'
@@ -22177,9 +22177,9 @@
 	    this.props.updateStep(1);
 	  },
 	  render: function render() {
-	    var numberOfDays = "1 to 2 ";
+	    var numberOfDays = '1 to 2 ';
 	    if (this.props.data.deliveryOption === 'Normal') {
-	      numberOfDays = "3 to 4 ";
+	      numberOfDays = '3 to 4 ';
 	    }
 	    return _react2.default.createElement(
 	      'div',
@@ -22195,7 +22195,7 @@
 	        'p',
 	        null,
 	        'You will soon get ',
-	        this.props.data.selectedBooks.join(", "),
+	        this.props.data.selectedBooks.join(', '),
 	        ' at ',
 	        this.props.data.shippingAddress,
 	        ' in approximately ',

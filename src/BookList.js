@@ -8,12 +8,11 @@ var BookList = React.createClass({
       books: [{id:1, name: 'Zero to One', author: 'Peter Thiel'},
               {id:2, name: 'Monk who sold his Ferrari', author: 'Robin Sharma'},
               {id:3, name: 'Wings of Fire', author: 'A.P.J. Abdul Kalam'}
-            ],
-              // selectedBooks: JSON.parse(localStorage.getItem('selectedBooks')) || [],
-              selectedBooks: [],
-              error: false
-            }
-    );
+      ],
+      // selectedBooks: JSON.parse(localStorage.getItem('selectedBooks')) || [],
+      selectedBooks: [],
+      error: false
+    });
   },
 
   componentDidMount: function () {
