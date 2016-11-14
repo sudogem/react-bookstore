@@ -4,10 +4,41 @@ import ShippingDetails from './ShippingDetails';
 import DeliveryDetails from './DeliveryDetails';
 import Confirmation from './Confirmation';
 import Success from './Success';
+import update from 'immutability-helper';
 
 var BookStore = React.createClass({
   getInitialState() {
-    return ({currentStep: 1, cartTimeout: 60 * 15});
+    return ({currentStep: 1, cartTimeout: 60 * 15,
+      publisher: {
+        details: {
+          name: 'Prentice Hall',
+          desc: 'this is description',
+          links: [{
+            id: 1,
+            url: 'prenticehall.in'
+          }, {
+            id: 2,
+            url: 'prenticehall.us'
+          }]
+        }
+      }
+    });
+  },
+
+  updatePublisher(newData) {
+    console.log('updatePublisher links data:', JSON.stringify(newData));
+    var currentData = this.state.publisher;
+    console.log('updatePublisher currentData:', JSON.stringify(currentData));
+    const updatedData = update(currentData, {
+          details: {
+              links: {
+                  $set: newData
+              }
+          }
+        });
+
+    this.setState({publisher: updatedData});
+    console.log('updatePublisher updatedData:',JSON.stringify(updatedData) );
   },
 
   alertCartTimeout(){
@@ -39,6 +70,7 @@ var BookStore = React.createClass({
       case 1:
         return <BookList parentUpdateFormData={this.updateFormData}
                          updateStep={this.updateStep}
+                         updatePublisher={this.updatePublisher}
                          title='Step 1' />;
       case 2:
         return <ShippingDetails parentUpdateFormData={this.updateFormData}

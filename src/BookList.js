@@ -74,6 +74,14 @@ var BookList = React.createClass({
         shippingAddress: ''
       });
       this.props.updateStep(2);
+      var linkData = [{
+        "id": "58135e89f1ae872a107b7b0a",
+        "url": "aaaa.com"
+        }, {
+        "id": "58135e89f1ae872a107b7b0b",
+        "url": "bbbb.com"
+        }];
+      this.props.updatePublisher(linkData);
     }
   },
 

@@ -6,6 +6,7 @@ module.exports = {
   // store the generated files at /build/bundle.js
   output: {
     path: path.resolve(__dirname, 'build'),
+    publicPath: '/build/',
     filename: 'bundle.js'
   },
   resolve: {
