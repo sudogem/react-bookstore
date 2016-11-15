@@ -31,7 +31,7 @@ var BookList = React.createClass({
   },
 
   _renderBook(book) {
-    return(
+    return (
       <div className="checkbox" key={book.id}>
         <label>
           <input type="checkbox" value={book.name} onChange={this.handleSelectedBooks} /> {book.name} -- {book.author}
@@ -53,13 +53,13 @@ var BookList = React.createClass({
       selbooks.splice(index, 1);
     }
 
-    this.setState({selectedBooks: selbooks });
+    this.setState({selectedBooks: selbooks});
     // localStorage.setItem('selectedBooks', JSON.stringify(selbooks));
   },
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log("Form submitted");
+    console.log('Form submitted');
     var selbooks = this.state.selectedBooks;
     console.log('QQQ selectedBooks:', selbooks);
 
@@ -75,26 +75,26 @@ var BookList = React.createClass({
       });
       this.props.updateStep(2);
       var linkData = [{
-        "id": "58135e89f1ae872a107b7b0a",
-        "url": "aaaa.com"
-        }, {
-        "id": "58135e89f1ae872a107b7b0b",
-        "url": "bbbb.com"
-        }];
+        'id': '58135e89f1ae872a107b7b0a',
+        'url': 'site1.com'
+      }, {
+        'id': '58135e89f1ae872a107b7b0b',
+        'url': 'site2.com'
+      }];
       this.props.updatePublisher(linkData);
     }
   },
 
   render() {
     var errorMessage = this._renderError();
-    return(
+    return (
       <div className='wrapper'>
         <h2>{this.props.title}</h2>
         <h3>Choose from wide variety of books available in our store.</h3>
         {errorMessage}
         <form onSubmit={this.handleSubmit}>
           {this.state.books.map((book) => {
-             return this._renderBook(book); })
+            return this._renderBook(book); })
           }
           <input type="submit" className="btn btn-success" value="Submit" />
         </form>
