@@ -30,12 +30,12 @@ var BookStore = React.createClass({
     var currentData = this.state.publisher;
     console.log('updatePublisher currentData:', JSON.stringify(currentData));
     const updatedData = update(currentData, {
-          details: {
-              links: {
-                  $set: newData
-              }
-          }
-        });
+      details: {
+        links: {
+          $set: newData
+        }
+      }
+    });
 
     this.setState({publisher: updatedData});
     console.log('updatePublisher updatedData:',JSON.stringify(updatedData) );
