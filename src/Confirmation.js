@@ -34,7 +34,7 @@ var Confirmation = React.createClass({
             <strong>Shipping Address</strong> : { this.props.data.shippingAddress }
           </div><br/>
           <div>
-            <strong>Selected books</strong> : { this.props.data.selectedBooks.join(", ") }
+            <strong>Selected books</strong> : { this.props.data.selectedBooks.join(', ') }
           </div><br/>
           <button className="btn btn-success">Place order</button>
         </form>
