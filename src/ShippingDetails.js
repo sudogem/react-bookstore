@@ -33,11 +33,11 @@ var ShippingDetails = React.createClass({
 
   _validateInput() {
     if (this.state.fullName === '') {
-      this.setState({error: "Please enter full name"});
+      this.setState({error: 'Please enter full name'});
     } else if (this.state.contactNumber === '') {
-      this.setState({error: "Please enter contact number"});
+      this.setState({error: 'Please enter contact number'});
     } else if (this.state.shippingAddress === '') {
-      this.setState({error: "Please enter shipping address"});
+      this.setState({error: 'Please enter shipping address'});
     } else {
       this.setState({error: false});
       return true;
