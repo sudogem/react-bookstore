@@ -48,10 +48,10 @@ var ShippingDetails = React.createClass({
     event.preventDefault();
     console.log('handleSubmit this.state.currentStep:', this.state.currentStep);
     var formData = {
-                    fullName: this.state.fullName,
-                    contactNumber: this.state.contactNumber,
-                    shippingAddress: this.state.shippingAddress
-                  };
+      fullName: this.state.fullName,
+      contactNumber: this.state.contactNumber,
+      shippingAddress: this.state.shippingAddress
+    };
     if(this._validateInput()) {
       this.props.parentUpdateFormData(formData);
       this.props.updateStep(3);
