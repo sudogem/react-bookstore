@@ -52,7 +52,7 @@ var ShippingDetails = React.createClass({
       contactNumber: this.state.contactNumber,
       shippingAddress: this.state.shippingAddress
     };
-    if(this._validateInput()) {
+    if (this._validateInput()) {
       this.props.parentUpdateFormData(formData);
       this.props.updateStep(3);
     }
@@ -76,7 +76,7 @@ var ShippingDetails = React.createClass({
     var errorMessage = this._renderError();
     var minutes = Math.floor(this.state.cartTimeout / 60);
     var seconds = this.state.cartTimeout - minutes * 60;
-    return(
+    return (
       <div className='wrapper'>
         <span><a href="#" onClick={this.updateStep} className='Floatright' >&laquo; Back to Step 1</a></span>
         <h2>{this.props.title}</h2>
