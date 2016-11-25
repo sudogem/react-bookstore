@@ -9,3 +9,6 @@ $ npm run nodeserver
 
 To run the linter   
 $ gulp lint   
+
+#### Developer   
+react-bookstore &copy; 2016, Arman Ortega. Released under the MIT License. 
