@@ -5,7 +5,7 @@
   "main": "",
   "scripts": {
     "nodeserver": "node server.js",
-    "start": "webpack src/index.js&&webpack-dev-server",
+    "start": "webpack src/index.jsx&&webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "sudogem",
